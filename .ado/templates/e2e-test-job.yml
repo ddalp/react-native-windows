@@ -82,11 +82,25 @@ jobs:
           script: |
             Start-Sleep -Seconds 30
 
+      - task: PowerShell@2
+        displayName: Get process
+        inputs:
+          targetType: inline # filePath | inline
+          script: |
+            Get-Process React*
+
       - task: CmdLine@2
         displayName: run test
         inputs:
           script: yarn run test
           workingDirectory: packages/E2ETest
+
+      - task: PowerShell@2
+        displayName: Get process 2
+        inputs:
+          targetType: inline # filePath | inline
+          script: |
+            Get-Process React*
 
       - task: PublishTestResults@2
         inputs:
