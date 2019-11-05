@@ -5,7 +5,16 @@
  */
 
 import * as React from 'react';
-import {AppRegistry, Switch, StyleSheet, View, Text, ScrollView, TouchableOpacity, RefreshControl} from 'react-native';
+import {
+  AppRegistry,
+  Switch,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
 
 function wait(timeout: number) {
   return new Promise(resolve => {
@@ -44,9 +53,9 @@ export default class Bootstrap extends React.Component<{}, any> {
   };
 
   onRefresh = () => {
-    this.setState({refreshing: true})
+    this.setState({refreshing: true});
     wait(2000).then(() => this.setState({refreshing: false}));
- }
+  };
 
   makeItems = (nItems: number, styles: Object): Array<any> => {
     const items = [];
@@ -158,7 +167,10 @@ export default class Bootstrap extends React.Component<{}, any> {
                   : styles.verticalScrollViewStyle
               }
               refreshControl={
-                <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.onRefresh}
+                />
               }
               snapToOffsets={[100.0, 500.0]}
               minimumZoomScale={0.1}
@@ -178,7 +190,6 @@ export default class Bootstrap extends React.Component<{}, any> {
     return item;
   }
 }
-
 
 const styles = StyleSheet.create({
   horizontalScrollViewStyle: {
